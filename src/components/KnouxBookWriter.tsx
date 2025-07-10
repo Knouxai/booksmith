@@ -122,9 +122,9 @@ const KnouxBookWriter: React.FC = () => {
             </div>
             <nav className="hidden md:flex items-center gap-6">
               <button
-                className={`text-xl font-normal transition-all duration-300 ${
+                className={`text-xl font-normal transition-all duration-300 hover:text-[#fcbe2d] ${
                   state.activeSection === "writer"
-                    ? "text-[#fcbe2d]"
+                    ? "text-[#fcbe2d] drop-shadow-[0_0_8px_rgba(252,190,45,0.8)]"
                     : "text-white"
                 }`}
                 onClick={() =>
@@ -134,8 +134,10 @@ const KnouxBookWriter: React.FC = () => {
                 المحرر
               </button>
               <button
-                className={`text-xl font-normal transition-all duration-300 ${
-                  state.showLibrary ? "text-[#fcbe2d]" : "text-white"
+                className={`text-xl font-normal transition-all duration-300 hover:text-[#fcbe2d] ${
+                  state.showLibrary
+                    ? "text-[#fcbe2d] drop-shadow-[0_0_8px_rgba(252,190,45,0.8)]"
+                    : "text-white"
                 }`}
                 onClick={toggleLibrary}
               >
@@ -150,9 +152,9 @@ const KnouxBookWriter: React.FC = () => {
                 القوالب
               </button>
               <button
-                className={`text-xl font-normal transition-all duration-300 ${
+                className={`text-xl font-normal transition-all duration-300 hover:text-[#fcbe2d] ${
                   state.activeSection === "export"
-                    ? "text-[#fcbe2d]"
+                    ? "text-[#fcbe2d] drop-shadow-[0_0_8px_rgba(252,190,45,0.8)]"
                     : "text-white"
                 }`}
                 onClick={() =>
@@ -262,7 +264,7 @@ const KnouxBookWriter: React.FC = () => {
             <div className="w-1/3 p-6">
               <div className="bg-black/70 border border-[#fcbe2d]/20 rounded-2xl p-6 h-full backdrop-blur-sm shadow-[0_0_20px_rgba(252,190,45,0.3)]">
                 <h2 className="text-white text-2xl font-bold mb-6">
-                  المكتبة الإسلامية ثلاثية ا��أبعاد
+                  المكتبة الإسلامية ثلاثية الأبعاد
                 </h2>
 
                 <div className="space-y-4 mb-6">
@@ -345,7 +347,7 @@ const KnouxBookWriter: React.FC = () => {
                     {state.writingProgress > 30 && (
                       <div className="mb-6">
                         <h3 className="text-black text-xl font-bold mb-3">
-                          الفصل الأ��ل
+                          الفصل الأول
                         </h3>
                         <p className="text-gray-800 text-base leading-relaxed">
                           وبه نستعين على أمور الدنيا والدين، هذا كتاب مبارك يهدي
@@ -507,7 +509,7 @@ const KnouxBookWriter: React.FC = () => {
             والمعرفة تجد موطنها."
           </p>
           <p className="text-[#fcbe2d] text-sm mt-2">
-            Powered by the Knoux BookSmith Ultra��� Engine
+            Powered by the Knoux BookSmith Ultra™ Engine
           </p>
         </footer>
       </div>
