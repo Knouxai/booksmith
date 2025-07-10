@@ -449,7 +449,7 @@ const KnouxBookWriter: React.FC = () => {
         {/* Templates Modal */}
         {state.showTemplates && (
           <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50 p-4">
-            <div className="bg-[#2d2d2d] border border-white/20 rounded-2xl p-8 max-w-4xl w-full max-h-[80vh] overflow-y-auto">
+            <div className="bg-black/90 border border-[#fcbe2d]/30 rounded-2xl p-8 max-w-4xl w-full max-h-[80vh] overflow-y-auto backdrop-blur-lg shadow-[0_0_40px_rgba(252,190,45,0.5)]">
               <h2 className="text-white text-3xl font-bold mb-6 text-center">
                 اختر قالب الكتابة (70 قالباً متخصصاً)
               </h2>
