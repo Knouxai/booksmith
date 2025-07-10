@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useCallback } from "react";
 import Editor from "../components/editor/Editor";
 import LivePreview from "../components/preview/LivePreview";
 import ChapterManager from "../components/chapterManager/ChapterManager";
