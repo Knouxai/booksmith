@@ -98,16 +98,16 @@ const KnouxBookWriter: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen w-full bg-black font-['Old_Standard_TT'] relative overflow-hidden">
+    <div className="min-h-screen w-full console-bg matrix-bg font-arabic relative overflow-hidden">
       {/* Background Image */}
       <img
         src="https://placehold.co/1920x1080/000000/000000"
         alt="Background"
-        className="absolute inset-0 w-full h-full object-cover opacity-50"
+        className="absolute inset-0 w-full h-full object-cover opacity-30"
       />
 
       {/* Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/30 to-black"></div>
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/40 to-black"></div>
 
       {/* Main Content */}
       <div className="relative z-10 min-h-screen flex flex-col">
