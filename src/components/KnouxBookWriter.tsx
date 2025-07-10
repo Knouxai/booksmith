@@ -29,7 +29,7 @@ const KnouxBookWriter: React.FC = () => {
     showLibrary: false,
     showTemplates: false,
     isWriting: false,
-    writingProgress: 0,
+    writingProgress: 15,
     currentChapter: 1,
     currentPage: 1,
     totalPages: 250,
@@ -76,16 +76,18 @@ const KnouxBookWriter: React.FC = () => {
 
   const startWriting = () => {
     setState((prev) => ({ ...prev, isWriting: true, writingProgress: 25 }));
-    // Simulate writing progress
-    setTimeout(() => {
-      setState((prev) => ({ ...prev, writingProgress: 50 }));
-    }, 2000);
-    setTimeout(() => {
-      setState((prev) => ({ ...prev, writingProgress: 75 }));
-    }, 4000);
-    setTimeout(() => {
-      setState((prev) => ({ ...prev, writingProgress: 100 }));
-    }, 6000);
+    setTimeout(
+      () => setState((prev) => ({ ...prev, writingProgress: 50 })),
+      2000,
+    );
+    setTimeout(
+      () => setState((prev) => ({ ...prev, writingProgress: 75 })),
+      4000,
+    );
+    setTimeout(
+      () => setState((prev) => ({ ...prev, writingProgress: 100 })),
+      6000,
+    );
   };
 
   const selectBook = (book: Book) => {
@@ -99,32 +101,41 @@ const KnouxBookWriter: React.FC = () => {
 
   return (
     <div
-      className="min-h-screen w-full bg-gradient-to-br from-black via-gray-900 to-black relative overflow-hidden"
-      style={{ fontFamily: "'Old Standard TT', serif" }}
+      className="min-h-screen w-full bg-black relative overflow-hidden"
+      style={{
+        fontFamily: "'Old Standard TT', serif",
+        background:
+          "linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #000000 100%)",
+      }}
     >
-      {/* Background Image */}
-      <img
-        src="https://placehold.co/1920x1080/000000/000000"
-        alt="Background"
-        className="absolute inset-0 w-full h-full object-cover opacity-20"
+      {/* Background Effects */}
+      <div
+        className="absolute inset-0 opacity-20"
+        style={{
+          backgroundImage:
+            "radial-gradient(circle at 20% 50%, rgba(252, 190, 45, 0.1) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(1, 160, 211, 0.1) 0%, transparent 50%), radial-gradient(circle at 40% 80%, rgba(193, 58, 197, 0.1) 0%, transparent 50%)",
+        }}
       />
-
-      {/* Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/40 to-black"></div>
 
       {/* Main Content */}
       <div className="relative z-10 min-h-screen flex flex-col">
         {/* Header */}
         <header className="flex items-center justify-between px-8 py-6">
           <div className="flex items-center gap-8">
-            <div className="text-[#fcbe2d] text-2xl font-bold tracking-wider drop-shadow-[0_0_10px_rgba(252,190,45,0.8)]">
+            <div
+              className="text-2xl font-bold tracking-wider"
+              style={{
+                color: "#fcbe2d",
+                textShadow: "0 0 10px rgba(252, 190, 45, 0.8)",
+              }}
+            >
               📚✨ KNOuX Kitāb al-Mubīn™
             </div>
             <nav className="hidden md:flex items-center gap-6">
               <button
-                className={`text-xl font-normal transition-all duration-300 hover:text-[#fcbe2d] ${
+                className={`text-xl font-normal transition-all duration-300 hover:opacity-80 ${
                   state.activeSection === "writer"
-                    ? "text-[#fcbe2d] drop-shadow-[0_0_8px_rgba(252,190,45,0.8)]"
+                    ? "text-yellow-400"
                     : "text-white"
                 }`}
                 onClick={() =>
@@ -134,17 +145,15 @@ const KnouxBookWriter: React.FC = () => {
                 المحرر
               </button>
               <button
-                className={`text-xl font-normal transition-all duration-300 hover:text-[#fcbe2d] ${
-                  state.showLibrary
-                    ? "text-[#fcbe2d] drop-shadow-[0_0_8px_rgba(252,190,45,0.8)]"
-                    : "text-white"
+                className={`text-xl font-normal transition-all duration-300 hover:opacity-80 ${
+                  state.showLibrary ? "text-yellow-400" : "text-white"
                 }`}
                 onClick={toggleLibrary}
               >
                 المكتبة
               </button>
               <button
-                className="text-white text-xl font-normal transition-all duration-300 hover:text-[#fcbe2d]"
+                className="text-white text-xl font-normal transition-all duration-300 hover:text-yellow-400"
                 onClick={() =>
                   setState((prev) => ({ ...prev, showTemplates: true }))
                 }
@@ -152,9 +161,9 @@ const KnouxBookWriter: React.FC = () => {
                 القوالب
               </button>
               <button
-                className={`text-xl font-normal transition-all duration-300 hover:text-[#fcbe2d] ${
+                className={`text-xl font-normal transition-all duration-300 hover:opacity-80 ${
                   state.activeSection === "export"
-                    ? "text-[#fcbe2d] drop-shadow-[0_0_8px_rgba(252,190,45,0.8)]"
+                    ? "text-yellow-400"
                     : "text-white"
                 }`}
                 onClick={() =>
@@ -167,18 +176,19 @@ const KnouxBookWriter: React.FC = () => {
           </div>
 
           <div className="flex items-center gap-4">
-            <Button
-              className={`px-6 py-3 rounded-full text-base font-normal transition-all duration-300 ${
-                state.isWriting
-                  ? "bg-[#fcbe2d] text-black border border-[#fcbe2d]"
-                  : "bg-[#2d2d2d] text-white border border-white"
-              }`}
+            <button
+              className="px-6 py-3 rounded-full text-base font-normal transition-all duration-300 border"
+              style={{
+                backgroundColor: state.isWriting ? "#fcbe2d" : "#2d2d2d",
+                color: state.isWriting ? "#000000" : "#ffffff",
+                borderColor: state.isWriting ? "#fcbe2d" : "#ffffff",
+              }}
             >
               دخول
-            </Button>
-            <Button className="px-6 py-3 bg-[#2d2d2d] border border-white text-white rounded-full text-base font-normal transition-all duration-300 hover:bg-white hover:text-black">
+            </button>
+            <button className="px-6 py-3 bg-gray-700 border border-white text-white rounded-full text-base font-normal transition-all duration-300 hover:bg-white hover:text-black">
               ابدأ الآن
-            </Button>
+            </button>
           </div>
         </header>
 
@@ -187,7 +197,14 @@ const KnouxBookWriter: React.FC = () => {
           {/* Writing Editor Sidebar */}
           {!state.showLibrary && (
             <div className="w-1/3 p-6">
-              <div className="bg-black/70 border border-[#fcbe2d]/20 rounded-2xl p-6 h-full backdrop-blur-sm shadow-[0_0_20px_rgba(252,190,45,0.3)]">
+              <div
+                className="rounded-2xl p-6 h-full backdrop-blur-sm border"
+                style={{
+                  backgroundColor: "rgba(0, 0, 0, 0.7)",
+                  borderColor: "rgba(252, 190, 45, 0.2)",
+                  boxShadow: "0 0 20px rgba(252, 190, 45, 0.3)",
+                }}
+              >
                 <h2 className="text-white text-2xl font-bold mb-6">
                   محرر الكتابة الذكي
                 </h2>
@@ -195,12 +212,22 @@ const KnouxBookWriter: React.FC = () => {
                 {/* Progress Steps */}
                 <div className="space-y-4 mb-6">
                   <div className="flex items-center gap-3">
-                    <div className="w-3 h-3 rounded-full bg-[#fcbe2d] shadow-[0_0_10px_rgba(252,190,45,0.8)]"></div>
+                    <div
+                      className="w-3 h-3 rounded-full"
+                      style={{
+                        backgroundColor: "#fcbe2d",
+                        boxShadow: "0 0 10px rgba(252, 190, 45, 0.8)",
+                      }}
+                    ></div>
                     <span className="text-white text-base">وحدة فهم النية</span>
                   </div>
                   <div className="flex items-center gap-3">
                     <div
-                      className={`w-3 h-3 rounded-full ${state.writingProgress > 20 ? "bg-[#fcbe2d]" : "bg-gray-600"}`}
+                      className="w-3 h-3 rounded-full"
+                      style={{
+                        backgroundColor:
+                          state.writingProgress > 20 ? "#fcbe2d" : "#666666",
+                      }}
                     ></div>
                     <span className="text-white text-base">
                       وحدة بناء الهيكل
@@ -208,19 +235,31 @@ const KnouxBookWriter: React.FC = () => {
                   </div>
                   <div className="flex items-center gap-3">
                     <div
-                      className={`w-3 h-3 rounded-full ${state.writingProgress > 40 ? "bg-[#fcbe2d]" : "bg-gray-600"}`}
+                      className="w-3 h-3 rounded-full"
+                      style={{
+                        backgroundColor:
+                          state.writingProgress > 40 ? "#fcbe2d" : "#666666",
+                      }}
                     ></div>
                     <span className="text-white text-base">وكيل الكتابة</span>
                   </div>
                   <div className="flex items-center gap-3">
                     <div
-                      className={`w-3 h-3 rounded-full ${state.writingProgress > 60 ? "bg-[#fcbe2d]" : "bg-gray-600"}`}
+                      className="w-3 h-3 rounded-full"
+                      style={{
+                        backgroundColor:
+                          state.writingProgress > 60 ? "#fcbe2d" : "#666666",
+                      }}
                     ></div>
                     <span className="text-white text-base">مساعد المراجعة</span>
                   </div>
                   <div className="flex items-center gap-3">
                     <div
-                      className={`w-3 h-3 rounded-full ${state.writingProgress > 80 ? "bg-[#fcbe2d]" : "bg-gray-600"}`}
+                      className="w-3 h-3 rounded-full"
+                      style={{
+                        backgroundColor:
+                          state.writingProgress > 80 ? "#fcbe2d" : "#666666",
+                      }}
                     ></div>
                     <span className="text-white text-base">
                       وكيل الصور السياقي
@@ -230,10 +269,14 @@ const KnouxBookWriter: React.FC = () => {
 
                 {/* Progress Bar */}
                 <div className="mb-6">
-                  <div className="w-full bg-[#1e1e1e] rounded-lg h-2">
+                  <div className="w-full bg-gray-800 rounded-lg h-2">
                     <div
-                      className="bg-gradient-to-r from-[#fcbe2d] to-[#c99824] h-2 rounded-lg transition-all duration-500"
-                      style={{ width: `${state.writingProgress}%` }}
+                      className="h-2 rounded-lg transition-all duration-500"
+                      style={{
+                        width: `${state.writingProgress}%`,
+                        background:
+                          "linear-gradient(to right, #fcbe2d, #c99824)",
+                      }}
                     ></div>
                   </div>
                   <p className="text-white text-sm mt-2">
@@ -243,18 +286,21 @@ const KnouxBookWriter: React.FC = () => {
 
                 {/* Input Area */}
                 <textarea
-                  className="w-full h-32 bg-[#1e1e1e] border border-white/20 rounded-lg p-4 text-white text-sm resize-none mb-4"
-                  placeholder="اكتب وصفاً لكتابك أو ابدأ بالإملاء الصوتي..."
+                  className="w-full h-32 bg-gray-800 border border-gray-600 rounded-lg p-4 text-white text-sm resize-none mb-4"
+                  placeholder="اكتب وصف��ً لكتابك أو ابدأ بالإملاء الصوتي..."
                   value={inputText}
                   onChange={(e) => setInputText(e.target.value)}
                 />
 
-                <Button
-                  className="w-full bg-gradient-to-r from-[#fcbe2d] to-[#c99824] text-black py-3 rounded-lg font-bold text-base transition-all duration-300 hover:from-[#c99824] hover:to-[#fcbe2d]"
+                <button
+                  className="w-full py-3 rounded-lg font-bold text-base transition-all duration-300 text-black"
+                  style={{
+                    background: "linear-gradient(to right, #fcbe2d, #c99824)",
+                  }}
                   onClick={startWriting}
                 >
                   🎤 ابدأ الكتابة بالذكاء الاصطناعي
-                </Button>
+                </button>
               </div>
             </div>
           )}
@@ -262,7 +308,14 @@ const KnouxBookWriter: React.FC = () => {
           {/* Library Sidebar */}
           {state.showLibrary && (
             <div className="w-1/3 p-6">
-              <div className="bg-black/70 border border-[#fcbe2d]/20 rounded-2xl p-6 h-full backdrop-blur-sm shadow-[0_0_20px_rgba(252,190,45,0.3)]">
+              <div
+                className="rounded-2xl p-6 h-full backdrop-blur-sm border"
+                style={{
+                  backgroundColor: "rgba(0, 0, 0, 0.7)",
+                  borderColor: "rgba(252, 190, 45, 0.2)",
+                  boxShadow: "0 0 20px rgba(252, 190, 45, 0.3)",
+                }}
+              >
                 <h2 className="text-white text-2xl font-bold mb-6">
                   المكتبة الإسلامية ثلاثية الأبعاد
                 </h2>
@@ -271,44 +324,61 @@ const KnouxBookWriter: React.FC = () => {
                   {books.map((book) => (
                     <div
                       key={book.id}
-                      className="bg-[#1e1e1e] border border-white/10 rounded-lg p-4 cursor-pointer transition-all duration-300 hover:border-[#fcbe2d]/50"
+                      className="bg-gray-800 border border-gray-600 rounded-lg p-4 cursor-pointer transition-all duration-300 hover:border-yellow-400"
                       onClick={() => selectBook(book)}
                     >
                       <h3 className="text-white text-base font-bold">
                         {book.title}
                       </h3>
                       <p className="text-gray-300 text-sm">{book.author}</p>
-                      <span className="inline-block mt-2 px-3 py-1 bg-[#fcbe2d] text-black text-xs rounded-full">
+                      <span
+                        className="inline-block mt-2 px-3 py-1 text-black text-xs rounded-full"
+                        style={{ backgroundColor: "#fcbe2d" }}
+                      >
                         {book.category}
                       </span>
                     </div>
                   ))}
                 </div>
 
-                <Button
-                  className="w-full bg-[#2d2d2d] border border-white text-white py-3 rounded-lg font-normal text-base transition-all duration-300 hover:bg-white hover:text-black"
+                <button
+                  className="w-full bg-gray-700 border border-white text-white py-3 rounded-lg font-normal text-base transition-all duration-300 hover:bg-white hover:text-black"
                   onClick={toggleLibrary}
                 >
                   إغلاق المكتبة
-                </Button>
+                </button>
               </div>
             </div>
           )}
 
           {/* Main Preview Area */}
           <div className="flex-1 p-6">
-            <div className="bg-black/80 border border-[#fcbe2d]/30 rounded-2xl h-full relative overflow-hidden backdrop-blur-lg shadow-[0_0_30px_rgba(252,190,45,0.4),0_0_60px_rgba(1,160,211,0.2),0_0_60px_rgba(193,58,197,0.2)]">
+            <div
+              className="rounded-2xl h-full relative overflow-hidden backdrop-blur-lg border"
+              style={{
+                backgroundColor: "rgba(0, 0, 0, 0.8)",
+                borderColor: "rgba(252, 190, 45, 0.3)",
+                boxShadow:
+                  "0 0 30px rgba(252, 190, 45, 0.4), 0 0 60px rgba(1, 160, 211, 0.2), 0 0 60px rgba(193, 58, 197, 0.2)",
+              }}
+            >
               {/* Top Accent Line */}
-              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#fcbe2d] to-transparent"></div>
+              <div
+                className="absolute top-0 left-0 right-0 h-1"
+                style={{
+                  background:
+                    "linear-gradient(to right, transparent, #fcbe2d, transparent)",
+                }}
+              ></div>
 
               <div className="p-8 h-full flex flex-col">
                 {/* Preview Header */}
                 <div className="flex items-center justify-between mb-6">
                   <h2 className="text-white text-3xl font-bold">
-                    🔴 ��لبث المباشر - معاينة الكتاب
+                    🔴 البث المباشر - معاينة الكتاب
                   </h2>
                   <div className="flex items-center gap-4">
-                    <span className="text-[#fcbe2d] text-sm">
+                    <span className="text-yellow-400 text-sm">
                       الفصل: {state.currentChapter}
                     </span>
                     <span className="text-white text-sm">
@@ -318,9 +388,20 @@ const KnouxBookWriter: React.FC = () => {
                 </div>
 
                 {/* Book Preview Content */}
-                <div className="flex-1 bg-gradient-to-br from-white to-gray-100 rounded-2xl p-8 relative overflow-hidden">
+                <div
+                  className="flex-1 rounded-2xl p-8 relative overflow-hidden"
+                  style={{
+                    background:
+                      "linear-gradient(135deg, #ffffff 0%, #f8f8f8 100%)",
+                  }}
+                >
                   {/* Book Header Accent */}
-                  <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-[#fcbe2d] to-[#c99824]"></div>
+                  <div
+                    className="absolute top-0 left-0 w-full h-2"
+                    style={{
+                      background: "linear-gradient(to right, #fcbe2d, #c99824)",
+                    }}
+                  ></div>
 
                   {/* Book Title */}
                   <div className="text-center mb-8">
@@ -335,12 +416,15 @@ const KnouxBookWriter: React.FC = () => {
                   {/* Book Content */}
                   <div className="text-right leading-7">
                     <div className="mb-6">
-                      <h2 className="text-black text-2xl font-bold mb-4 border-b border-[#fcbe2d] pb-2">
+                      <h2
+                        className="text-black text-2xl font-bold mb-4 pb-2 border-b"
+                        style={{ borderColor: "#fcbe2d" }}
+                      >
                         المقدمة
                       </h2>
                       <p className="text-gray-800 text-lg leading-relaxed">
                         {state.livePreview ||
-                          "بسم الله الرحمن الرحيم، الحمد لله رب العالمين..."}
+                          "بسم الله الرحمن الرحيم، الحمد لله رب العالمين، والصلاة والسلام على أشرف المرسلين، نبينا محمد وعلى آله وصحبه أجمعين. أما بعد، فهذا كتاب مبارك يحتوي على علوم جمة ومعارف واسعة تنفع القارئ في دينه ودنياه..."}
                       </p>
                     </div>
 
@@ -351,7 +435,7 @@ const KnouxBookWriter: React.FC = () => {
                         </h3>
                         <p className="text-gray-800 text-base leading-relaxed">
                           وبه نستعين على أمور الدنيا والدين، هذا كتاب مبارك يهدي
-                          إلى الحق المبين...
+                          إلى الحق المبين، ويرشد إلى الصراط المستقيم...
                         </p>
                       </div>
                     )}
@@ -363,7 +447,8 @@ const KnouxBookWriter: React.FC = () => {
                         </h3>
                         <p className="text-gray-800 text-base leading-relaxed">
                           في هذا المبحث نتناول الأسس والمبادئ التي يقوم عليها
-                          هذا العلم الشريف...
+                          هذا العلم الشريف، والقواعد التي ترشد الطالب إلى الفهم
+                          الصحيح...
                         </p>
                       </div>
                     )}
@@ -371,9 +456,18 @@ const KnouxBookWriter: React.FC = () => {
 
                   {/* Live Writing Indicator */}
                   <div className="absolute bottom-4 right-4">
-                    <div className="flex items-center gap-2 bg-[rgba(252,190,45,0.1)] px-3 py-1 rounded-full">
-                      <div className="w-2 h-2 bg-[#fcbe2d] rounded-full animate-pulse"></div>
-                      <span className="text-[#fcbe2d] text-xs font-bold">
+                    <div
+                      className="flex items-center gap-2 px-3 py-1 rounded-full"
+                      style={{ backgroundColor: "rgba(252, 190, 45, 0.1)" }}
+                    >
+                      <div
+                        className="w-2 h-2 rounded-full animate-pulse"
+                        style={{ backgroundColor: "#fcbe2d" }}
+                      ></div>
+                      <span
+                        className="text-xs font-bold"
+                        style={{ color: "#fcbe2d" }}
+                      >
                         جاري الكتابة...
                       </span>
                     </div>
@@ -383,20 +477,21 @@ const KnouxBookWriter: React.FC = () => {
                 {/* Action Buttons */}
                 <div className="mt-4 flex items-center justify-between">
                   <div className="flex items-center gap-4">
-                    <Button
-                      className="bg-[#fcbe2d] text-black px-4 py-2 rounded-lg font-bold text-sm transition-all duration-300 hover:bg-[#c99824]"
+                    <button
+                      className="px-4 py-2 rounded-lg font-bold text-sm transition-all duration-300 text-black"
+                      style={{ backgroundColor: "#fcbe2d" }}
                       onClick={() =>
                         setState((prev) => ({ ...prev, showTemplates: true }))
                       }
                     >
                       اختر قالب
-                    </Button>
-                    <Button className="bg-[#2d2d2d] border border-white text-white px-4 py-2 rounded-lg font-normal text-sm transition-all duration-300 hover:bg-white hover:text-black">
+                    </button>
+                    <button className="bg-gray-700 border border-white text-white px-4 py-2 rounded-lg font-normal text-sm transition-all duration-300 hover:bg-white hover:text-black">
                       إضافة صورة
-                    </Button>
-                    <Button className="bg-[#2d2d2d] border border-white text-white px-4 py-2 rounded-lg font-normal text-sm transition-all duration-300 hover:bg-white hover:text-black">
+                    </button>
+                    <button className="bg-gray-700 border border-white text-white px-4 py-2 rounded-lg font-normal text-sm transition-all duration-300 hover:bg-white hover:text-black">
                       تصدير PDF
-                    </Button>
+                    </button>
                   </div>
                   <div className="text-white text-sm">آخر حفظ: الآن</div>
                 </div>
@@ -406,23 +501,36 @@ const KnouxBookWriter: React.FC = () => {
 
           {/* Smart Tools Sidebar */}
           <div className="w-1/3 p-6">
-            <div className="bg-black/70 border border-[#fcbe2d]/20 rounded-2xl p-6 h-full backdrop-blur-sm shadow-[0_0_20px_rgba(252,190,45,0.3)]">
+            <div
+              className="rounded-2xl p-6 h-full backdrop-blur-sm border"
+              style={{
+                backgroundColor: "rgba(0, 0, 0, 0.7)",
+                borderColor: "rgba(252, 190, 45, 0.2)",
+                boxShadow: "0 0 20px rgba(252, 190, 45, 0.3)",
+              }}
+            >
               <h2 className="text-white text-2xl font-bold mb-6">
                 الأدوات الذكية
               </h2>
 
               <div className="space-y-4">
-                <div className="bg-[#1e1e1e] border border-white/10 rounded-lg p-4">
-                  <h3 className="text-[#fcbe2d] text-base font-bold mb-2">
+                <div className="bg-gray-800 border border-gray-600 rounded-lg p-4">
+                  <h3
+                    className="text-base font-bold mb-2"
+                    style={{ color: "#fcbe2d" }}
+                  >
                     🎯 مولد الصور السياقي
                   </h3>
                   <p className="text-gray-300 text-sm">
-                    إنشاء صور توضيحية تت��اسب مع المحتوى
+                    إنشاء صور توضيحية تتناسب مع المحتوى
                   </p>
                 </div>
 
-                <div className="bg-[#1e1e1e] border border-white/10 rounded-lg p-4">
-                  <h3 className="text-[#fcbe2d] text-base font-bold mb-2">
+                <div className="bg-gray-800 border border-gray-600 rounded-lg p-4">
+                  <h3
+                    className="text-base font-bold mb-2"
+                    style={{ color: "#fcbe2d" }}
+                  >
                     🎤 الإملاء الصوتي
                   </h3>
                   <p className="text-gray-300 text-sm">
@@ -430,14 +538,17 @@ const KnouxBookWriter: React.FC = () => {
                   </p>
                 </div>
 
-                <div className="bg-[#1e1e1e] border border-white/10 rounded-lg p-4">
-                  <h3 className="text-[#fcbe2d] text-base font-bold mb-2">
+                <div className="bg-gray-800 border border-gray-600 rounded-lg p-4">
+                  <h3
+                    className="text-base font-bold mb-2"
+                    style={{ color: "#fcbe2d" }}
+                  >
                     🕌 الوضع الإسلامي
                   </h3>
                   <p className="text-gray-300 text-sm">
                     أذكار الكتابة وتنبيهات الصلاة
                   </p>
-                  <div className="mt-2 text-[#fcbe2d] text-xs">
+                  <div className="mt-2 text-xs" style={{ color: "#fcbe2d" }}>
                     سبحان الله وبحمده
                   </div>
                 </div>
@@ -448,22 +559,32 @@ const KnouxBookWriter: React.FC = () => {
 
         {/* Templates Modal */}
         {state.showTemplates && (
-          <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50 p-4">
-            <div className="bg-black/90 border border-[#fcbe2d]/30 rounded-2xl p-8 max-w-4xl w-full max-h-[80vh] overflow-y-auto backdrop-blur-lg shadow-[0_0_40px_rgba(252,190,45,0.5)]">
+          <div className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 p-4">
+            <div
+              className="rounded-2xl p-8 max-w-4xl w-full max-h-[80vh] overflow-y-auto backdrop-blur-lg border"
+              style={{
+                backgroundColor: "rgba(0, 0, 0, 0.9)",
+                borderColor: "rgba(252, 190, 45, 0.3)",
+                boxShadow: "0 0 40px rgba(252, 190, 45, 0.5)",
+              }}
+            >
               <h2 className="text-white text-3xl font-bold mb-6 text-center">
                 اختر قالب الكتابة (70 قالباً متخصصاً)
               </h2>
 
               <div className="grid grid-cols-2 gap-6 mb-6">
-                <div className="bg-[#1e1e1e] border border-white/10 rounded-2xl p-6">
-                  <h3 className="text-[#fcbe2d] text-xl font-bold mb-4">
+                <div className="bg-gray-800 border border-gray-600 rounded-2xl p-6">
+                  <h3
+                    className="text-xl font-bold mb-4"
+                    style={{ color: "#fcbe2d" }}
+                  >
                     ✨ Knoux-EpicWeaver (الراوي الملحمي)
                   </h3>
                   <div className="space-y-2">
                     {templates.map((template, index) => (
                       <div
                         key={index}
-                        className="bg-[#2d2d2d] border border-white/10 rounded-lg p-3 cursor-pointer transition-all duration-300 hover:border-[#fcbe2d]/50"
+                        className="bg-gray-700 border border-gray-600 rounded-lg p-3 cursor-pointer transition-all duration-300 hover:border-yellow-400"
                         onClick={() => selectTemplate(state.category, template)}
                       >
                         <span className="text-white text-sm">{template}</span>
@@ -472,15 +593,18 @@ const KnouxBookWriter: React.FC = () => {
                   </div>
                 </div>
 
-                <div className="bg-[#1e1e1e] border border-white/10 rounded-2xl p-6">
-                  <h3 className="text-[#fcbe2d] text-xl font-bold mb-4">
+                <div className="bg-gray-800 border border-gray-600 rounded-2xl p-6">
+                  <h3
+                    className="text-xl font-bold mb-4"
+                    style={{ color: "#fcbe2d" }}
+                  >
                     📚 Knoux-ScholarForge (منجم العلماء)
                   </h3>
                   <div className="space-y-2">
                     {templates.slice(0, 4).map((template, index) => (
                       <div
                         key={index}
-                        className="bg-[#2d2d2d] border border-white/10 rounded-lg p-3 cursor-pointer transition-all duration-300 hover:border-[#fcbe2d]/50"
+                        className="bg-gray-700 border border-gray-600 rounded-lg p-3 cursor-pointer transition-all duration-300 hover:border-yellow-400"
                         onClick={() => selectTemplate("scholar", template)}
                       >
                         <span className="text-white text-sm">{template}</span>
@@ -490,14 +614,15 @@ const KnouxBookWriter: React.FC = () => {
                 </div>
               </div>
 
-              <Button
-                className="w-full bg-[#fcbe2d] text-black py-3 rounded-lg font-bold text-base transition-all duration-300 hover:bg-[#c99824]"
+              <button
+                className="w-full py-3 rounded-lg font-bold text-base transition-all duration-300 text-black"
+                style={{ backgroundColor: "#fcbe2d" }}
                 onClick={() =>
                   setState((prev) => ({ ...prev, showTemplates: false }))
                 }
               >
                 إغلاق
-              </Button>
+              </button>
             </div>
           </div>
         )}
@@ -508,7 +633,7 @@ const KnouxBookWriter: React.FC = () => {
             "حيث الكلمة تُبَثّ على الهواء مباشرةً، والكتاب ينبض بالحياة،
             والمعرفة تجد موطنها."
           </p>
-          <p className="text-[#fcbe2d] text-sm mt-2">
+          <p className="text-sm mt-2" style={{ color: "#fcbe2d" }}>
             Powered by the Knoux BookSmith Ultra™ Engine
           </p>
         </footer>
