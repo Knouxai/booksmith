@@ -9,9 +9,11 @@ export const KnouxHeader = () => {
     <header className="flex h-16 items-center justify-between border-b border-navy-800/50 bg-navy-800/50 px-6 py-3 backdrop-blur-md">
       <div className="flex items-center gap-3">
         {/* شعار Knoux واسم التطبيق */}
-        <img
-          src="/assets/icons/knoux-logo-transparent.png"
+        <Image
+          src="/logo.png"
           alt="Knoux Logo"
+          width={32}
+          height={32}
           className="h-8 w-auto"
         />
         <span className="text-xl font-serif font-semibold text-gold-400">
@@ -19,7 +21,7 @@ export const KnouxHeader = () => {
         </span>
       </div>
       <div className="flex items-center gap-4">
-        {/* أزرار شريط البحث وواجهة AI والمنبه والملف الشخصي والإعدادات */}
+        {/* أزرار شريط البحث وواجهة AI وا��منبه والملف الشخصي والإعدادات */}
         {/* يمكن إضافة أيقونات وأزرار هنا */}
         <button className="text-slate-gray hover:text-gold-400">بحث</button>
         <button className="text-slate-gray hover:text-gold-400">تنبيهات</button>
