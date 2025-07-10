@@ -114,7 +114,7 @@ const KnouxBookWriter: React.FC = () => {
         {/* Header */}
         <header className="flex items-center justify-between px-8 py-6">
           <div className="flex items-center gap-8">
-            <div className="text-white text-2xl font-bold">
+            <div className="console-text text-2xl font-bold tracking-wider">
               📚✨ KNOuX Kitāb al-Mubīn™
             </div>
             <nav className="hidden md:flex items-center gap-6">
