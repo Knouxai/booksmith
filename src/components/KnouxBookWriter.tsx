@@ -55,7 +55,7 @@ const KnouxBookWriter: React.FC = () => {
     },
     {
       id: "4",
-      title: "الفقه الإسلامي",
+      title: "الفقه الإسل��مي",
       author: "وهبة الزحيلي",
       category: "فقه",
     },
@@ -117,7 +117,7 @@ const KnouxBookWriter: React.FC = () => {
         {/* Header */}
         <header className="flex items-center justify-between px-8 py-6">
           <div className="flex items-center gap-8">
-            <div className="console-text text-2xl font-bold tracking-wider">
+            <div className="text-[#fcbe2d] text-2xl font-bold tracking-wider drop-shadow-[0_0_10px_rgba(252,190,45,0.8)]">
               📚✨ KNOuX Kitāb al-Mubīn™
             </div>
             <nav className="hidden md:flex items-center gap-6">
@@ -338,7 +338,7 @@ const KnouxBookWriter: React.FC = () => {
                       </h2>
                       <p className="text-gray-800 text-lg leading-relaxed">
                         {state.livePreview ||
-                          "بسم الله الرحمن الرح��م، الحمد لله رب العالمين..."}
+                          "بسم الله الرحمن الرحيم، الحمد لله رب العالمين..."}
                       </p>
                     </div>
 
@@ -503,7 +503,7 @@ const KnouxBookWriter: React.FC = () => {
         {/* Footer */}
         <footer className="text-center py-6">
           <p className="text-white text-base">
-            "حيث الكلم�� تُبَثّ على الهواء مباشرةً، والكتاب ينبض بالحياة،
+            "حيث الكلمة تُبَثّ على الهواء مباشرةً، والكتاب ينبض بالحياة،
             والمعرفة تجد موطنها."
           </p>
           <p className="text-[#fcbe2d] text-sm mt-2">
