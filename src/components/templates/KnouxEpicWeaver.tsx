@@ -3,7 +3,7 @@
 import React from "react";
 
 interface KnouxEpicWeaverProps {
-  // Props can be extended as needed
+  onTemplateAction?: (action: string, data?: unknown) => void;
 }
 
 const KnouxEpicWeaver: React.FC<KnouxEpicWeaverProps> = () => {

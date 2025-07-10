@@ -1,6 +1,26 @@
 import * as React from "react";
-import { KnouxCard, KnouxCardHeader, KnouxCardTitle, KnouxCardDescription, KnouxCardContent, KnouxButton, KnouxAccordion, KnouxAccordionItem, KnouxAccordionTrigger, KnouxAccordionContent } from "../ui";
-import { Feather, BookOpen, FileText, BookMarked, BrainCircuit, Pencil, Star, Book, File, Users, Settings, PaintBrush, Rocket, Scroll } from "lucide-react";
+import {
+  KnouxCard,
+  KnouxCardHeader,
+  KnouxCardTitle,
+  KnouxCardDescription,
+  KnouxCardContent,
+  KnouxCardFooter,
+  KnouxButton,
+  KnouxAccordion,
+  KnouxAccordionItem,
+  KnouxAccordionTrigger,
+  KnouxAccordionContent,
+} from "../ui";
+import {
+  Feather,
+  BookOpen,
+  BookMarked,
+  Star,
+  PaintBrush,
+  Rocket,
+  Scroll,
+} from "lucide-react";
 
 const sectionsData = [
   {
@@ -85,7 +105,7 @@ const sectionsData = [
       "كتب السفر والمغامرات",
       "اليوميات المتتابعة",
       "توثيق تاريخ العائلة",
-      "كتب التطوير الذاتي المستندة للتجارب",
+      "��تب التطوير الذاتي المستندة للتجارب",
       "قصص وتجارب ملهمة حول الصمود",
       "المقالات الشخصية والنصوص التأملية",
       "الذكريات الجماعية للمجموعات أو المناسبات",
@@ -107,7 +127,7 @@ const sectionsData = [
       "كتب التمويل الشخصي والاستثمار",
       "كتب تعليم مهارة معينة",
       "إعداد أدلة وخطط عمل للشركات الناشئة",
-      "تأليف المحاضرات والورش التدريبية",
+      "تأليف المحاضرات والورش التدري��ية",
       "كتب دراسات حالة وتحليلات للمشاكل المعاصرة",
     ],
   },
@@ -132,33 +152,53 @@ const sectionsData = [
 ];
 
 export const TemplateSections: React.FC = () => {
-  const [expandedSection, setExpandedSection] = React.useState<string | null>(null);
+  const [expandedSection, setExpandedSection] = React.useState<string | null>(
+    null,
+  );
 
   const toggleSection = (id: string) => {
-    setExpandedSection(prev => (prev === id ? null : id));
+    setExpandedSection((prev) => (prev === id ? null : id));
   };
 
   return (
     <div className="space-y-8">
-      {sectionsData.map(section => {
+      {sectionsData.map((section) => {
         const Icon = section.icon;
         return (
-          <KnouxCard key={section.id} className="bg-navy-800/50 backdrop-blur-md border border-gold-400/30 shadow-lg">
+          <KnouxCard
+            key={section.id}
+            className="bg-navy-800/50 backdrop-blur-md border border-gold-400/30 shadow-lg"
+          >
             <KnouxCardHeader>
-              <KnouxCardTitle className="flex items-center gap-3 text-gold-400 text-xl font-serif cursor-pointer" onClick={() => toggleSection(section.id)}>
+              <KnouxCardTitle
+                className="flex items-center gap-3 text-gold-400 text-xl font-serif cursor-pointer"
+                onClick={() => toggleSection(section.id)}
+              >
                 <Icon className="h-6 w-6" />
                 {section.label}
               </KnouxCardTitle>
               <KnouxCardDescription>{section.description}</KnouxCardDescription>
             </KnouxCardHeader>
             <KnouxCardContent>
-              <KnouxAccordion type="single" collapsible value={expandedSection} onValueChange={setExpandedSection}>
+              <KnouxAccordion
+                type="single"
+                collapsible
+                value={expandedSection}
+                onValueChange={setExpandedSection}
+              >
                 <KnouxAccordionItem value={section.id}>
-                  <KnouxAccordionTrigger>{section.label} القوالب</KnouxAccordionTrigger>
+                  <KnouxAccordionTrigger>
+                    {section.label} القوالب
+                  </KnouxAccordionTrigger>
                   <KnouxAccordionContent>
                     <ul className="list-disc list-inside space-y-1 text-slate-300">
                       {section.templates.map((template, idx) => (
-                        <li key={idx} className="cursor-pointer hover:text-gold-400 transition">{template}</li>
+                        <li
+                          key={idx}
+                          className="cursor-pointer hover:text-gold-400 transition"
+                        >
+                          {template}
+                        </li>
                       ))}
                     </ul>
                   </KnouxAccordionContent>
@@ -166,7 +206,9 @@ export const TemplateSections: React.FC = () => {
               </KnouxAccordion>
             </KnouxCardContent>
             <KnouxCardFooter className="flex justify-end">
-              <KnouxButton variant="outline" size="sm">استعراض المزيد</KnouxButton>
+              <KnouxButton variant="outline" size="sm">
+                استعراض المزيد
+              </KnouxButton>
             </KnouxCardFooter>
           </KnouxCard>
         );

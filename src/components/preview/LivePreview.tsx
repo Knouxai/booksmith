@@ -13,7 +13,6 @@ const LivePreview: React.FC<LivePreviewProps> = ({
   content,
   chapters,
   images,
-  templateHub,
 }) => {
   // Render chapters with titles and content, images inserted by chapter
   return (
