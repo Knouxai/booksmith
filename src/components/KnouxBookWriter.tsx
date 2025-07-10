@@ -195,7 +195,7 @@ const KnouxBookWriter: React.FC = () => {
                 {/* Progress Steps */}
                 <div className="space-y-4 mb-6">
                   <div className="flex items-center gap-3">
-                    <div className="w-3 h-3 rounded-full bg-[#fcbe2d]"></div>
+                    <div className="w-3 h-3 rounded-full bg-[#fcbe2d] shadow-[0_0_10px_rgba(252,190,45,0.8)]"></div>
                     <span className="text-white text-base">وحدة فهم النية</span>
                   </div>
                   <div className="flex items-center gap-3">
