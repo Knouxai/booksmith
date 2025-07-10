@@ -46,12 +46,19 @@ export default function HomePage() {
     setImages((prev) => [...prev, image]);
   }, []);
 
+  // Template hub options
+  const templateOptions = [
+    { value: "Knoux-EpicWeaver", label: "Knoux-EpicWeaver" },
+    { value: "Scholar-Forge", label: "Scholar-Forge" },
+    { value: "Sacred-Script", label: "Sacred-Script" },
+    { value: "Creative-Canvas", label: "Creative-Canvas" },
+  ];
+
   // Render template hub component based on selected templateHub
   const renderTemplateHub = () => {
     switch (templateHub) {
       case "Knoux-EpicWeaver":
         return <KnouxEpicWeaver />;
-      // Other template hubs will be added here later
       default:
         return null;
     }
@@ -91,8 +98,11 @@ export default function HomePage() {
                   value={templateHub}
                   onChange={(e) => setTemplateHub(e.target.value)}
                 >
-                  <option value="Knoux-EpicWeaver">Knoux-EpicWeaver</option>
-                  {/* Other template hubs options will be added here */}
+                  {templateOptions.map((option) => (
+                    <option key={option.value} value={option.value}>
+                      {option.label}
+                    </option>
+                  ))}
                 </select>
               </div>
             </aside>
