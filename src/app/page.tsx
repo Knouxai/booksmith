@@ -6,6 +6,9 @@ import LivePreview from "../components/preview/LivePreview";
 import ChapterManager from "../components/chapterManager/ChapterManager";
 import AIImageEngine from "../components/aiImageEngine/AIImageEngine";
 import KnouxEpicWeaver from "../components/templates/KnouxEpicWeaver";
+import { KnouxHeader } from "../components/sections/KnouxHeader";
+import { KnouxSidebar } from "../components/sections/KnouxSidebar";
+import { KnouxStatusBar } from "../components/sections/KnouxStatusBar";
 
 export default function HomePage() {
   // State for book content, chapters, images, and templates
@@ -24,11 +27,13 @@ export default function HomePage() {
       // Update content of current chapter
       setChapters((prevChapters) =>
         prevChapters.map((chapter) =>
-          chapter.id === currentChapterId ? { ...chapter, content: newContent } : chapter
-        )
+          chapter.id === currentChapterId
+            ? { ...chapter, content: newContent }
+            : chapter,
+        ),
       );
     },
-    [currentChapterId]
+    [currentChapterId],
   );
 
   // Handler to update chapters order
@@ -53,56 +58,75 @@ export default function HomePage() {
   };
 
   return (
-    <div className="flex h-screen bg-white text-black font-sans">
-      {/* Chapter Manager Sidebar */}
-      <aside className="w-64 border-r border-gray-300 p-4 overflow-y-auto">
-        <h2 className="text-xl font-bold mb-4">Chapters</h2>
-        <ChapterManager
-          chapters={chapters}
-          onChaptersChange={handleChaptersChange}
-          currentChapterId={currentChapterId}
-          setCurrentChapterId={(id: string) => setCurrentChapterId(id)}
-        />
-        <div className="mt-6">
-          <label htmlFor="templateHub" className="block mb-2 font-semibold">
-            Select Template Hub
-          </label>
-          <select
-            id="templateHub"
-            className="w-full border border-gray-300 rounded p-2"
-            value={templateHub}
-            onChange={(e) => setTemplateHub(e.target.value)}
-          >
-            <option value="Knoux-EpicWeaver">Knoux-EpicWeaver</option>
-            {/* Other template hubs options will be added here */}
-          </select>
-        </div>
-      </aside>
+    <div className="flex h-screen w-full flex-col overflow-hidden font-sans antialiased bg-gradient-to-br from-navy-900 via-navy-800 to-navy-900 backdrop-blur-xl">
+      {/* Header الرئيسي للتطبيق */}
+      <KnouxHeader />
 
-      {/* Main Editor and Preview Split */}
-      <main className="flex flex-1 flex-col md:flex-row">
-        {/* Editor and Template Hub */}
-        <section className="flex-1 p-4 border-r border-gray-300 overflow-auto flex flex-col">
-          <Editor
-            content={content}
-            onContentChange={handleContentChange}
-            currentChapterId={currentChapterId}
-            templateHub={templateHub}
-          />
-          <AIImageEngine onAddImage={handleAddImage} />
-          <div className="mt-6">{renderTemplateHub()}</div>
-        </section>
+      <div className="flex flex-1 overflow-hidden">
+        {/* الشريط الجانبي */}
+        <KnouxSidebar />
 
-        {/* Live Preview */}
-        <section className="flex-1 p-4 overflow-auto">
-          <LivePreview
-            content={content}
-            chapters={chapters}
-            images={images}
-            templateHub={templateHub}
-          />
-        </section>
-      </main>
+        {/* المساحة الرئيسية لعرض المحتوى */}
+        <main className="flex-1 overflow-auto p-5">
+          <div className="flex h-full">
+            {/* Chapter Manager Sidebar */}
+            <aside className="w-64 border-r border-gray-300 p-4 overflow-y-auto bg-navy-800/40 rounded-lg mr-4">
+              <h2 className="text-xl font-bold mb-4 text-gold-400">Chapters</h2>
+              <ChapterManager
+                chapters={chapters}
+                onChaptersChange={handleChaptersChange}
+                currentChapterId={currentChapterId}
+                setCurrentChapterId={(id: string) => setCurrentChapterId(id)}
+              />
+              <div className="mt-6">
+                <label
+                  htmlFor="templateHub"
+                  className="block mb-2 font-semibold text-off-white"
+                >
+                  Select Template Hub
+                </label>
+                <select
+                  id="templateHub"
+                  className="w-full border border-gray-300 rounded p-2 bg-navy-700 text-off-white"
+                  value={templateHub}
+                  onChange={(e) => setTemplateHub(e.target.value)}
+                >
+                  <option value="Knoux-EpicWeaver">Knoux-EpicWeaver</option>
+                  {/* Other template hubs options will be added here */}
+                </select>
+              </div>
+            </aside>
+
+            {/* Main Editor and Preview Split */}
+            <div className="flex flex-1 flex-col md:flex-row">
+              {/* Editor and Template Hub */}
+              <section className="flex-1 p-4 border-r border-gray-300 overflow-auto flex flex-col bg-navy-800/40 rounded-lg mr-4">
+                <Editor
+                  content={content}
+                  onContentChange={handleContentChange}
+                  currentChapterId={currentChapterId}
+                  templateHub={templateHub}
+                />
+                <AIImageEngine onAddImage={handleAddImage} />
+                <div className="mt-6">{renderTemplateHub()}</div>
+              </section>
+
+              {/* Live Preview */}
+              <section className="flex-1 p-4 overflow-auto bg-navy-800/40 rounded-lg">
+                <LivePreview
+                  content={content}
+                  chapters={chapters}
+                  images={images}
+                  templateHub={templateHub}
+                />
+              </section>
+            </div>
+          </div>
+        </main>
+      </div>
+
+      {/* شريط الحالة السفلي */}
+      <KnouxStatusBar />
     </div>
   );
 }
