@@ -10,14 +10,26 @@ import { KnouxHeader } from "../components/sections/KnouxHeader";
 import { KnouxSidebar } from "../components/sections/KnouxSidebar";
 import { KnouxStatusBar } from "../components/sections/KnouxStatusBar";
 
+interface Chapter {
+  id: string;
+  title: string;
+  content: string;
+}
+
+interface ImageType {
+  id: string;
+  url: string;
+  alt?: string;
+}
+
 export default function HomePage() {
   // State for book content, chapters, images, and templates
-  const [chapters, setChapters] = useState<any[]>([
+  const [chapters, setChapters] = useState<Chapter[]>([
     { id: "1", title: "Chapter 1", content: "" },
   ]);
   const [currentChapterId, setCurrentChapterId] = useState<string | null>("1");
   const [content, setContent] = useState<string>("");
-  const [images, setImages] = useState<any[]>([]);
+  const [images, setImages] = useState<ImageType[]>([]);
   const [templateHub, setTemplateHub] = useState<string>("Knoux-EpicWeaver");
 
   // Handler to update content from editor
