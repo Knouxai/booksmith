@@ -98,12 +98,15 @@ const KnouxBookWriter: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen w-full console-bg matrix-bg font-arabic relative overflow-hidden">
+    <div
+      className="min-h-screen w-full bg-gradient-to-br from-black via-gray-900 to-black relative overflow-hidden"
+      style={{ fontFamily: "'Old Standard TT', serif" }}
+    >
       {/* Background Image */}
       <img
         src="https://placehold.co/1920x1080/000000/000000"
         alt="Background"
-        className="absolute inset-0 w-full h-full object-cover opacity-30"
+        className="absolute inset-0 w-full h-full object-cover opacity-20"
       />
 
       {/* Gradient Overlay */}
@@ -128,7 +131,7 @@ const KnouxBookWriter: React.FC = () => {
                   setState((prev) => ({ ...prev, activeSection: "writer" }))
                 }
               >
-                المحر��
+                المحرر
               </button>
               <button
                 className={`text-xl font-normal transition-all duration-300 ${
@@ -335,7 +338,7 @@ const KnouxBookWriter: React.FC = () => {
                       </h2>
                       <p className="text-gray-800 text-lg leading-relaxed">
                         {state.livePreview ||
-                          "بسم الله الرحمن الرحيم، الحمد لله رب العالمين..."}
+                          "بسم الله الرحمن الرح��م، الحمد لله رب العالمين..."}
                       </p>
                     </div>
 
@@ -500,7 +503,7 @@ const KnouxBookWriter: React.FC = () => {
         {/* Footer */}
         <footer className="text-center py-6">
           <p className="text-white text-base">
-            "حيث الكلمة تُبَثّ على الهواء مباشرةً، والكتاب ينبض بالحياة،
+            "حيث الكلم�� تُبَثّ على الهواء مباشرةً، والكتاب ينبض بالحياة،
             والمعرفة تجد موطنها."
           </p>
           <p className="text-[#fcbe2d] text-sm mt-2">
