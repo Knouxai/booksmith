@@ -55,7 +55,7 @@ const KnouxBookWriter: React.FC = () => {
     },
     {
       id: "4",
-      title: "الفقه الإسل��مي",
+      title: "الفقه الإسلامي",
       author: "وهبة الزحيلي",
       category: "فقه",
     },
@@ -185,7 +185,7 @@ const KnouxBookWriter: React.FC = () => {
           {/* Writing Editor Sidebar */}
           {!state.showLibrary && (
             <div className="w-1/3 p-6">
-              <div className="console-bg console-border rounded-2xl p-6 h-full backdrop-blur-sm">
+              <div className="bg-black/70 border border-[#fcbe2d]/20 rounded-2xl p-6 h-full backdrop-blur-sm shadow-[0_0_20px_rgba(252,190,45,0.3)]">
                 <h2 className="text-white text-2xl font-bold mb-6">
                   محرر الكتابة الذكي
                 </h2>
@@ -260,9 +260,9 @@ const KnouxBookWriter: React.FC = () => {
           {/* Library Sidebar */}
           {state.showLibrary && (
             <div className="w-1/3 p-6">
-              <div className="console-bg console-border rounded-2xl p-6 h-full backdrop-blur-sm">
+              <div className="bg-black/70 border border-[#fcbe2d]/20 rounded-2xl p-6 h-full backdrop-blur-sm shadow-[0_0_20px_rgba(252,190,45,0.3)]">
                 <h2 className="text-white text-2xl font-bold mb-6">
-                  المكتبة الإسلامية ثلاثية الأبعاد
+                  المكتبة الإسلامية ثلاثية ا��أبعاد
                 </h2>
 
                 <div className="space-y-4 mb-6">
@@ -295,7 +295,7 @@ const KnouxBookWriter: React.FC = () => {
 
           {/* Main Preview Area */}
           <div className="flex-1 p-6">
-            <div className="console-bg console-border console-glow rounded-2xl h-full relative overflow-hidden backdrop-blur-lg">
+            <div className="bg-black/80 border border-[#fcbe2d]/30 rounded-2xl h-full relative overflow-hidden backdrop-blur-lg shadow-[0_0_30px_rgba(252,190,45,0.4),0_0_60px_rgba(1,160,211,0.2),0_0_60px_rgba(193,58,197,0.2)]">
               {/* Top Accent Line */}
               <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#fcbe2d] to-transparent"></div>
 
@@ -345,7 +345,7 @@ const KnouxBookWriter: React.FC = () => {
                     {state.writingProgress > 30 && (
                       <div className="mb-6">
                         <h3 className="text-black text-xl font-bold mb-3">
-                          الفصل الأول
+                          الفصل الأ��ل
                         </h3>
                         <p className="text-gray-800 text-base leading-relaxed">
                           وبه نستعين على أمور الدنيا والدين، هذا كتاب مبارك يهدي
@@ -404,7 +404,7 @@ const KnouxBookWriter: React.FC = () => {
 
           {/* Smart Tools Sidebar */}
           <div className="w-1/3 p-6">
-            <div className="console-bg console-border rounded-2xl p-6 h-full backdrop-blur-sm">
+            <div className="bg-black/70 border border-[#fcbe2d]/20 rounded-2xl p-6 h-full backdrop-blur-sm shadow-[0_0_20px_rgba(252,190,45,0.3)]">
               <h2 className="text-white text-2xl font-bold mb-6">
                 الأدوات الذكية
               </h2>
@@ -507,7 +507,7 @@ const KnouxBookWriter: React.FC = () => {
             والمعرفة تجد موطنها."
           </p>
           <p className="text-[#fcbe2d] text-sm mt-2">
-            Powered by the Knoux BookSmith Ultra™ Engine
+            Powered by the Knoux BookSmith Ultra��� Engine
           </p>
         </footer>
       </div>
