@@ -128,7 +128,7 @@ const KnouxBookWriter: React.FC = () => {
                   setState((prev) => ({ ...prev, activeSection: "writer" }))
                 }
               >
-                المحرر
+                المحر��
               </button>
               <button
                 className={`text-xl font-normal transition-all duration-300 ${
@@ -292,7 +292,7 @@ const KnouxBookWriter: React.FC = () => {
 
           {/* Main Preview Area */}
           <div className="flex-1 p-6">
-            <div className="bg-[rgba(30,30,30,0.95)] border border-white/10 rounded-2xl h-full relative overflow-hidden shadow-[0_0_16px_16px_#1e1e1e,42px_-1px_90px_-13px_#01a0d3,-42px_-1px_90px_-13px_#c13ac5]">
+            <div className="console-bg console-border console-glow rounded-2xl h-full relative overflow-hidden backdrop-blur-lg">
               {/* Top Accent Line */}
               <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#fcbe2d] to-transparent"></div>
 
@@ -501,7 +501,7 @@ const KnouxBookWriter: React.FC = () => {
         <footer className="text-center py-6">
           <p className="text-white text-base">
             "حيث الكلمة تُبَثّ على الهواء مباشرةً، والكتاب ينبض بالحياة،
-            والمعرفة تجد م��طنها."
+            والمعرفة تجد موطنها."
           </p>
           <p className="text-[#fcbe2d] text-sm mt-2">
             Powered by the Knoux BookSmith Ultra™ Engine
