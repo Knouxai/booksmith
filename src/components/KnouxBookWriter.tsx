@@ -182,7 +182,7 @@ const KnouxBookWriter: React.FC = () => {
           {/* Writing Editor Sidebar */}
           {!state.showLibrary && (
             <div className="w-1/3 p-6">
-              <div className="bg-[rgba(45,45,45,0.9)] border border-white/10 rounded-2xl p-6 h-full">
+              <div className="console-bg console-border rounded-2xl p-6 h-full backdrop-blur-sm">
                 <h2 className="text-white text-2xl font-bold mb-6">
                   محرر الكتابة الذكي
                 </h2>
@@ -257,7 +257,7 @@ const KnouxBookWriter: React.FC = () => {
           {/* Library Sidebar */}
           {state.showLibrary && (
             <div className="w-1/3 p-6">
-              <div className="bg-[rgba(45,45,45,0.9)] border border-white/10 rounded-2xl p-6 h-full">
+              <div className="console-bg console-border rounded-2xl p-6 h-full backdrop-blur-sm">
                 <h2 className="text-white text-2xl font-bold mb-6">
                   المكتبة الإسلامية ثلاثية الأبعاد
                 </h2>
@@ -401,7 +401,7 @@ const KnouxBookWriter: React.FC = () => {
 
           {/* Smart Tools Sidebar */}
           <div className="w-1/3 p-6">
-            <div className="bg-[rgba(45,45,45,0.9)] border border-white/10 rounded-2xl p-6 h-full">
+            <div className="console-bg console-border rounded-2xl p-6 h-full backdrop-blur-sm">
               <h2 className="text-white text-2xl font-bold mb-6">
                 الأدوات الذكية
               </h2>
@@ -501,7 +501,7 @@ const KnouxBookWriter: React.FC = () => {
         <footer className="text-center py-6">
           <p className="text-white text-base">
             "حيث الكلمة تُبَثّ على الهواء مباشرةً، والكتاب ينبض بالحياة،
-            والمعرفة تجد موطنها."
+            والمعرفة تجد م��طنها."
           </p>
           <p className="text-[#fcbe2d] text-sm mt-2">
             Powered by the Knoux BookSmith Ultra™ Engine
