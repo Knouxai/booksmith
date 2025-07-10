@@ -22,8 +22,8 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body className="bg-white text-black font-sans min-h-screen">
-        <div className="max-w-screen-xl mx-auto px-4 py-6">{children}</div>
+      <body className="bg-black text-white font-sans min-h-screen overflow-x-hidden">
+        {children}
       </body>
     </html>
   );
